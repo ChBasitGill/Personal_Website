@@ -16,7 +16,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: windows-latest
-    steps:
+    steps: 
     - uses: actions/checkout@v1
       name: Checkout Code
      
@@ -33,12 +33,14 @@ jobs:
       run: msbuild Personal_WebSite\Personal_Website.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
    
     - uses: actions/checkout@v2
-    - name: CheckOut Code 2
-    - run: mkdir -p /artifact
-      
+
+    - run: mkdir -p path/to/artifact
+
+    - run: echo hello > path/to/artifact/world.txt
+
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: /artifact/
+        path: path/to/artifact/world.txt
     
  
