@@ -22,16 +22,20 @@ jobs:
      
     - name: Setup MSBuild Path
       uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+          working-directory: Personal_WebSite
        
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
      
     - name: Restore NuGet Packages
       run: nuget restore Personal_WebSite\Personal_WebSite.sln
- 
+      working-directory: Personal_WebSite
+      
     - name: Build and Publish Web App
       run: msbuild Personal_WebSite\Personal_Website.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
-   
+      working-directory: Personal_WebSite
+      
     - uses: actions/checkout@v2
 
     - run: mkdir -p artifact
