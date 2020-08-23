@@ -29,7 +29,7 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
      
     - name: Restore NuGet Packages
-      run: nuget restore Personal_WebSite\Personal_WebSite.sln
+      run: nuget restore Personal_WebSite.sln
       working-directory: Personal_WebSite
       
     - name: Build and Publish Web App
