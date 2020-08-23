@@ -32,10 +32,15 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
-    TargetPath: '$(Build.ArtifactStagingDirectory)/data'
-    publishLocation: 'Container'
+    TargetPath: '$(Build.ArtifactStagingDirectory)/Data'
     
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'Publish'
+    publishLocation: 'pipeline'
+    
