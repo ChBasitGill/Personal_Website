@@ -32,6 +32,7 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
+    TargetPath: '$(Build.ArtifactStagingDirectory)/data'
     publishLocation: 'Container'
     
 - task: VSTest@2
