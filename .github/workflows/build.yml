@@ -35,12 +35,4 @@ jobs:
     - name: CheckOut Code 2
     - uses: actions/checkout@v2
     
-    - name: Create Directory for artifacts
-    - run: mkdir -p /artifact
-    
-    - name: Upload
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: /artifact/
  
