@@ -33,7 +33,7 @@ jobs:
       working-directory: Personal_WebSite
       
     - name: Build and Publish Web App
-      run: msbuild Personal_WebSite\Personal_Website.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      run: msbuild Personal_Website.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       working-directory: Personal_WebSite
       
     - uses: actions/checkout@v2
