@@ -31,8 +31,14 @@ jobs:
  
     - name: Build and Publish Web App
       run: msbuild Personal_WebSite\Personal_Website.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
-    
-    - name: CheckOut Code 2
+   
     - uses: actions/checkout@v2
+    - name: CheckOut Code 2
+    - run: mkdir -p /artifact
+      
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: /artifact/
     
  
