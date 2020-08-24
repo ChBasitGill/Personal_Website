@@ -33,5 +33,5 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: published_webapp
-        path: bin\Release\Publish
+        path: Personal_WebSite\bin\Release\Publish
         working-directory: Personal_WebSite
