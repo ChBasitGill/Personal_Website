@@ -4,26 +4,20 @@ name: Build Application
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+ 
+on: [push]
+ 
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+ 
     runs-on: windows-latest
-    steps: 
+ 
+    steps:
     - uses: actions/checkout@v1
       name: Checkout Code
      
     - name: Setup MSBuild Path
       uses: warrenbuckley/Setup-MSBuild@v1
-      env:
-          working-directory: Personal_WebSite
        
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
@@ -31,19 +25,13 @@ jobs:
     - name: Restore NuGet Packages
       run: nuget restore Personal_WebSite.sln
       working-directory: Personal_WebSite
-      
+ 
     - name: Build and Publish Web App
-      run: msbuild Personal_Website.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      run: msbuild Personal_WebSite.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       working-directory: Personal_WebSite
-      
-    - uses: actions/checkout@v2
-
-    - run: mkdir -p artifact
-
-
-    - uses: actions/upload-artifact@v2
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
       with:
-        name: my-artifact
-        path: artifact
-    
+        name: published_webapp
+        path: bin\Release\Publish
  
